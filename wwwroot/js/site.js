@@ -1,7 +1,10 @@
-﻿function entrar() {
+﻿var _user = "";
+function entrar() {
     desabilitarNome();
     habilitarEnviar();
     toggleEntrarSair(true);
+
+    document.getElementById("txtMessage").focus();
 }
 
 function sair() {
@@ -44,6 +47,7 @@ function desabilitarEnviar() {
 }
 function desabilitarNome() {
     const elTxtNome = document.getElementById("txtNome");
+    _user = elTxtNome.value;
     elTxtNome.disabled = true;
 }
 function habilitaNome() {
@@ -53,6 +57,7 @@ function habilitaNome() {
 
 function limparNome() {
     document.getElementById("txtNome").value = "";
+    _user = "";
 }
 function habilitarEnviar() {
     const eltxtMessage = document.getElementById("txtMessage");
@@ -61,34 +66,47 @@ function habilitarEnviar() {
     elEnviar.disabled = false;
 }
 
+document.getElementById("txtMessage").addEventListener("keypress", function(event) {
+    if (event.key === "Enter" && !document.getElementById("btnEnviar").disabled ) {
+      event.preventDefault();
+      document.getElementById("btnEnviar").click();
+    }
+  });
+
 function postMinhaMensagem() {
     var minhaMens = document.getElementById("txtMessage").value;
     if (minhaMens !== null && minhaMens !== "") {
-        postMessage(minhaMens, true);
+        connection.invoke("SendMessage", _user, minhaMens).catch(function (err) {
+            return console.error(err.toString());
+        });
+        event.preventDefault();
         document.getElementById("txtMessage").value = "";
     }
 }
 
-function postMessage(texto, minhaMensagem) {
+function postMessage(texto, user) {
+    let minhaMensagem = user == _user;
     if (minhaMensagem) {
         if (!minhaUltimaMensagem()) $("#box-message-group").append(montarMensagen(true));
-        adicionarMensagem(texto, true);
+        adicionarMensagem(texto, true, user);
     } else {
-        if (!mesmoUsuarioUltimaMensagagem()) $("#box-message-group").append(montarMensagen(false));
-        adicionarMensagem(texto, false);
+        if (!mesmoUsuarioUltimaMensagagem(user)) $("#box-message-group").append(montarMensagen(false));
+        adicionarMensagem(texto, false, user);
     }
+
+    let boxMessage = document.getElementById("box-message-group");
+    boxMessage.scrollTop = boxMessage.scrollHeight;
 }
 
 function minhaUltimaMensagem(user) {
     return $(".lbl-hora-envio:last").hasClass("direita");
 }
 
-var mesmoUltimo = false;
 function mesmoUsuarioUltimaMensagagem(user) {
-    return $(".lbl-hora-envio:last").hasClass("esquerda");
+    return $(".lbl-hora-envio:last").hasClass("esquerda") && $(".lbl-hora-envio:last").hasClass("user-" + user);
 }
 
-function adicionarMensagem(mensagem, minhaMens) {
+function adicionarMensagem(mensagem, minhaMens, user) {
     const templateMessageEsquerda = `<p class="small p-2 ms-3 mb-1 rounded-3" style="background-color: #f5f6f7;">${mensagem}</p><br>`;
     const templateMessageDireita = ` <p class="small p-2 me-3 mb-1 text-white rounded-3 bg-primary">${mensagem}</p><br>`;
 
@@ -96,7 +114,7 @@ function adicionarMensagem(mensagem, minhaMens) {
     let groupMens = $(".grupo-mensagens:last");
     var lblHora = groupMens.find(".lbl-hora-envio")[0];
     $(template).insertBefore(lblHora);
-    atualizarHoraEnvio();
+    atualizarHoraEnvio(minhaMens ? "" : user);
 }
 
 function montarMensagen(minhaMens) {
@@ -119,10 +137,14 @@ function montarMensagen(minhaMens) {
     return minhaMens ? templateMensagemUsuarioDireita : templateMensagemUsuarioEsquerda;
 }
 
-function atualizarHoraEnvio() {
+function atualizarHoraEnvio(user) {
     const dtEnvio = new Date();
-    const min = String(dtEnvio.getMinutes()).padStart(2, '0')
+    const min = String(dtEnvio.getMinutes()).padStart(2, "0");
 
-    var lstUltimasHoras = document.getElementsByClassName("lbl-hora-envio")
-    lstUltimasHoras[lstUltimasHoras.length - 1].innerHTML = `${dtEnvio.getHours()}:${min}`;
+    var lstUltimasHoras = document.getElementsByClassName("lbl-hora-envio");
+    var el = lstUltimasHoras[lstUltimasHoras.length - 1];
+    if (user != "" && user != _user) el.innerHTML = `<b>${user}</b>  às `;
+
+    el.innerHTML += `${dtEnvio.getHours()}:${min}`;
+    el.classList.add("user-" + user);
 }
