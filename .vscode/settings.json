@@ -1,0 +1,5 @@
+{
+    "appService.preDeployTask": "publish-release",
+    "appService.deploySubpath": "bin\\Release\\net6.0\\publish",
+    "appService.defaultWebAppToDeploy": "/subscriptions/64dbdd31-2d37-4605-96a4-d8dba70a9ac6/AppServices/subscriptions/64dbdd31-2d37-4605-96a4-d8dba70a9ac6/resourceGroups/appsvc_windows_centralus/providers/Microsoft.Web/sites/m5-chat-demo"
+}
