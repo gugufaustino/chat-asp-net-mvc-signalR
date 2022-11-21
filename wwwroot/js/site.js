@@ -118,8 +118,8 @@ function adicionarMensagem(mensagem, minhaMens, user) {
 }
 
 function montarMensagen(minhaMens) {
-    const templateMensagemUsuarioEsquerda = `<div class="d-flex flex-row justify-content-start">
-    <i class="bi bi-person fs-2" style="width: 40px; height: 100%; "></i>
+    const templateMensagemUsuarioEsquerda = `<div class="d-flex flex-row justify-content-start">    
+    <img src="/img/hacker.png" alt="avatar 1" style="width: 64px; height: 100%;">
     <div class="grupo-mensagens esquerda">
          
         <p class="small ms-3 mb-3 rounded-3 text-muted lbl-hora-envio esquerda"></p>
@@ -130,8 +130,8 @@ function montarMensagen(minhaMens) {
     <div class="grupo-mensagens direita text-end">
 
     <p class="small me-3 mb-3 rounded-3 text-muted d-flex justify-content-end lbl-hora-envio direita"></p>
-    </div>
-    <i class="bi bi-person fs-2" style="width: 40px; height: 100%; "></i>
+    </div>    
+    <img src="/img/hacker.png" alt="avatar 1" style="width: 64px; height: 100%;">
 </div>`;
 
     return minhaMens ? templateMensagemUsuarioDireita : templateMensagemUsuarioEsquerda;
