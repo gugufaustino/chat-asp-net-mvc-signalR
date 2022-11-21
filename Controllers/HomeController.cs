@@ -12,17 +12,7 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-
-        // conectar ao hub
         return View();
-    }
-
-    public JsonResult Enviar()
-    {
-
-        // enviar mensagem ao canal
-
-        return Json("enviado");
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
