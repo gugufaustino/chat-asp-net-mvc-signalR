@@ -9,9 +9,9 @@ connection.on("UsersCount", function (connectionId, qtdUser) {
     console.log(`entrou/saiu: ${connectionId}`);
     
      if(!isNaN(qtdUser))
-        document.getElementById("qtdUser").innerHTML = parseInt(qtdUser) + 1
+        document.getElementById("qtdUser").innerHTML = parseInt(qtdUser)
 
-});
+});0
     
 
 connection.start().then(function () {

@@ -143,8 +143,9 @@ function atualizarHoraEnvio(user) {
 
     var lstUltimasHoras = document.getElementsByClassName("lbl-hora-envio");
     var el = lstUltimasHoras[lstUltimasHoras.length - 1];
-    if (user != "" && user != _user) el.innerHTML = `<b>${user}</b>  às `;
+    var nomeHora = "";
+    if (user != "" && user != _user) nomeHora = `<b>${user}</b>  às `;
 
-    el.innerHTML += `${dtEnvio.getHours()}:${min}`;
+    el.innerHTML = nomeHora + `${dtEnvio.getHours()}:${min}`;
     el.classList.add("user-" + user);
 }
