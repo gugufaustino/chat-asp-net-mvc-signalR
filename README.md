@@ -1,17 +1,18 @@
 # chat-asp-net-mvc-signalR
+[![Build & Test](https://github.com/gugufaustino/chat-asp-net-mvc-signalR/actions/workflows/dotnet.yml/badge.svg)](https://github.com/gugufaustino/chat-asp-net-mvc-signalR/actions/workflows/dotnet.yml)
+Live Demo https://m5-chat-demo.azurewebsites.net/
 
 Projeto academico para a disciplina Fundamentos de Redes de Computadores do curso ANALISE E DESENVOLVIMENTO DE SISTEMAS da Universidade do Vale do Rio dos Sinos (UNISINOS).
 Tarefa M5, fazer uma aplicação com uso de sockets.
 
-Live Demo https://m5-chat-demo.azurewebsites.net/
 
 #### INTERFACE
 
-Foi utilizado o framework front-end bootstrap para elaborar a interface com padrão e aspecto bonito
+Foi utilizado o framework front-end bootstrap para elaborar a interface com padrão e aspecto bonito.
 
 #### APLICAÇÃO
 
-Foi utilizado a tecnologia ASP.NET Core MVC versão 6.0 para ser o servidor. Essa aplicação ela tem a responsabilidade de servir conteudo html no caso o site, e manter os agentes conectados ao websocket.
+Foi utilizado a tecnologia ASP.NET Core MVC versão 6.0 para ser o servidor. Essa aplicação ela tem a responsabilidade de servir conteudo html, no caso o site, e manter os agentes conectados ao websocket.
 
 #### SOCKET
 
