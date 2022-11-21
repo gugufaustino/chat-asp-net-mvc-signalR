@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.SignalR;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.SignalR;
 
 namespace m5_chat
 {
     public class NotificationHub : Hub
     {
-
 
         public NotificationHub(IHttpContextAccessor httpContextAccessor)
         {

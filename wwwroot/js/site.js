@@ -139,6 +139,7 @@ function montarMensagen(minhaMens) {
 
 function atualizarHoraEnvio(user) {
     const dtEnvio = new Date();
+    const hor = String(dtEnvio.getHours()).padStart(2, "0");
     const min = String(dtEnvio.getMinutes()).padStart(2, "0");
 
     var lstUltimasHoras = document.getElementsByClassName("lbl-hora-envio");
@@ -146,6 +147,6 @@ function atualizarHoraEnvio(user) {
     var nomeHora = "";
     if (user != "" && user != _user) nomeHora = `<b>${user}</b>  às `;
 
-    el.innerHTML = nomeHora + `${dtEnvio.getHours()}:${min}`;
+    el.innerHTML = nomeHora + `${hor}:${min}`;
     el.classList.add("user-" + user);
 }
