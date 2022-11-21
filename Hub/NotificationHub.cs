@@ -26,7 +26,7 @@ namespace m5_chat
             return base.OnConnectedAsync();
         }
 
-        public override Task OnDisconnectedAsync(Exception exception)
+        public override Task OnDisconnectedAsync(Exception? exception)
         {
             ConnectedIds.Remove(Context.ConnectionId);
             Clients.All.SendAsync("UsersCount", Context.ConnectionId, ConnectedIds.Count);
