@@ -1,4 +1,34 @@
-﻿var _user = "";
+﻿/*
+    
+
+    Este arquivo faz a manipuação da interface/DOM para que a interface se comporte como um chat e também faz envio de mensagem ao servidor: 
+    - Possibilita entrar com um nome qualquer;
+    - Possibilita enviar mensagem ao servidor;
+    - Quando servidor envia ao navegador faz algumas manipulações para que o chat tenha o aspecto de chat tradicional:
+        - - Basicamente adiciona na div de mensagens a mensagem de cada usuário, fazendo controle para por na direita as "minhas mensagens" e no lado esquerdo "mensagem de outro usuário
+
+
+*/
+
+var _user = "";
+
+
+/* Este pondo é o envio de uma mensagem ao servidor
+*/
+function postMinhaMensagem() {
+    var minhaMens = document.getElementById("txtMessage").value;
+    if (minhaMens !== null && minhaMens !== "") {
+        
+        //função no chat.js que envia ao servidor a mensagem
+        invokeSendMessage(_user, minhaMens);       
+
+        event.preventDefault();
+        document.getElementById("txtMessage").value = "";
+    }
+}
+
+/* Desse metodo para baixo são funções para manipulação da interface
+ */
 function entrar() {
     desabilitarNome();
     habilitarEnviar();
@@ -15,6 +45,8 @@ function sair() {
     habilitaNome();
     toggleEntrarSair(false);
 }
+
+
 
 function toggleEntrarSair(entrar) {
     if (entrar) {
@@ -73,16 +105,6 @@ document.getElementById("txtMessage").addEventListener("keypress", function(even
     }
   });
 
-function postMinhaMensagem() {
-    var minhaMens = document.getElementById("txtMessage").value;
-    if (minhaMens !== null && minhaMens !== "") {
-        connection.invoke("SendMessage", _user, minhaMens).catch(function (err) {
-            return console.error(err.toString());
-        });
-        event.preventDefault();
-        document.getElementById("txtMessage").value = "";
-    }
-}
 
 function postMessage(texto, user) {
     let minhaMensagem = user == _user;
