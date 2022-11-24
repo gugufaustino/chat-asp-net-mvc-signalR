@@ -6,6 +6,14 @@ Live Demo https://m5-chat-demo.azurewebsites.net/
 Projeto academico para a disciplina Fundamentos de Redes de Computadores do curso ANALISE E DESENVOLVIMENTO DE SISTEMAS da Universidade do Vale do Rio dos Sinos (UNISINOS).
 Tarefa M5, fazer uma aplicação com uso de sockets.
 
+#### ARQUIVOS
+
+Lista do arquivos relevantes do projeto e onde estão os comentários para entendimento da configuração a conexão do websocket:
+Index.cshtml
+- site.js
+- chat.js
+- Program.cs
+- NotificationHub.cs
 
 #### INTERFACE
 
