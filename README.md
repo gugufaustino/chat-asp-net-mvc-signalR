@@ -7,13 +7,12 @@ Projeto academico para a disciplina Fundamentos de Redes de Computadores do curs
 Tarefa M5, fazer uma aplicação com uso de sockets.
 
 #### ARQUIVOS
-
-Lista do arquivos relevantes do projeto e onde estão os comentários para entendimento da configuração a conexão do websocket:
-Index.cshtml
-- site.js
-- chat.js
-- Program.cs
-- NotificationHub.cs
+<sub>Lista do arquivos relevantes do projeto e onde estão os comentários para entendimento da configuração a conexão do websocket</sub>
+> - Index.cshtml
+> - site.js
+> - chat.js
+> - Program.cs
+> - NotificationHub.cs
 
 #### INTERFACE
 
